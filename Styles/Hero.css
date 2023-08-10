@@ -1,0 +1,243 @@
+:root{
+    --name: 40px;
+    --role : 20px;
+    --lwt : 16px;
+    --right-padding : 2rem;
+    --center-line-width : 705px;
+    --light-gray : #ccc;
+    --light: #fff;
+    --dark : #161616;
+    --left-padding : 3rem;
+    --values : 20px;
+}
+
+.hero{
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    padding-top: 100px;
+}
+
+.hero .center img{
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 2px solid var(--light-gray);
+    object-fit: cover;
+}
+
+.hero .info{
+    flex-direction: column;
+    width: 100%;
+    height: 500px;
+    align-items: flex-start;
+    border-bottom: 2px solid var(--light-gray);
+    padding-right: var(--right-padding);
+    color: var(--light-gray);
+}
+
+.hero .right .info{
+    border: none;
+    border-top: 2px solid var(--light-gray);
+    padding-left: var(--left-padding);
+}
+
+.hero .left .name{
+    font-size: var(--name);
+    color: var(--light);
+}
+
+.hero .left .role{
+    font-size: var(--role);
+    border-bottom: 1px solid var(--light-gray);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+}
+
+.hero .left p{
+    margin-bottom: 3rem;
+}
+
+.hero .left .lwt{
+    background-color: var(--dark);
+    color: var(--light);
+    outline: none;
+    border: 1px solid var(--light);
+    font-size: var(--lwt);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 3rem;
+    transition: all .3s ease-in-out;
+}
+
+.hero .left .lwt:hover{
+    color: var(--dark);
+    background-color: var(--light);
+}
+
+.hero .right .info h1{
+    font-size: var(--values);
+    color: var(--light);
+    margin-bottom: 0.5rem;
+}
+
+.hero .right .info h3{
+    margin-bottom: 2rem;
+    border-top: 1px solid var(--light-gray);
+    padding-top: .5rem;
+    width: fit-content;
+}
+
+.hero .center , .hero .info{
+    position: relative;
+}
+
+.hero .center::before{
+    content: "";
+    position: absolute;
+    width: var(--center-line-width);
+    height: 2px;
+    background-color: var(--light-gray);
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+
+.hero .info::before{
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--light-gray);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50% , -50%);
+}
+
+.hero .left .info::before{
+    top: 100%;
+    left: 100%;
+}
+
+/* ************** Resposive ********** */
+
+@media screen and (max-width : 1134px) {
+    :root{
+        --center-line-width : 605px;
+        --left-padding : 2rem;
+    }
+
+    .hero .center img{
+        width: 350px;
+        height: 500px;
+        border-radius: 20rem;
+    }
+
+    .hero .center::before{
+        transform: rotate(-55deg);
+    }
+}
+
+@media screen and (max-width : 980px) {
+    .hero{
+        grid-template-columns: 1fr auto;
+    }
+
+    .hero .info{
+        height: 100%;
+    }
+
+    .hero .info::before , .hero .center::before{
+        display: none;
+    }
+
+    .hero .center{
+        border-bottom: 2px solid var(--light-gray);
+        padding-bottom: 3rem;
+    }
+
+    .hero .right{
+        grid-column: 1 / span 2;
+        padding: 2rem 0;
+    }
+
+    .hero .right .info{
+        border: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hero .right .info .values{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width : 750px) {
+    .hero .center img{
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+    }
+
+    .hero .left .info{
+        padding-bottom: 2rem;
+    }
+}
+
+@media screen and (max-width : 650px) {
+    :root{
+        --right-padding : 0;
+        --name : 30px;
+        --role : 18px;
+        --lwt : 14px;
+        --left-padding: 0;
+        --values : 18px;
+    }
+
+    .hero{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 70px;
+    }
+
+    .hero .center{
+        order: -1;
+        border: none;
+        padding-bottom: 2rem;
+    }
+
+    .hero .left .role{
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width : 507px) {
+    .hero .center img{
+        border-radius: 1rem;
+    }
+
+    .hero .right{
+        width: 100%;
+        overflow: auto;
+    }
+
+    .hero .right .info{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+    }
+
+    .hero .right .info .values{
+        min-width: max-content;
+        margin: 0 1rem;
+    }
+}
